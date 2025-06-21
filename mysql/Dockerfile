@@ -1,0 +1,9 @@
+FROM mysql:8.4
+
+WORKDIR /app
+ADD . /app
+
+USER mysql
+ENV MYSQL_ROOT_PASSWORD=root-password
+ENV MYSQL_DATABASE=tutorials
+EXPOSE 3306
