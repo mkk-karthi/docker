@@ -1,0 +1,31 @@
+services:
+  db:
+    container_name: mysql
+    image: mysql:8.4
+    restart: always
+    env_file: "mysql.env"
+    ports:
+      - 3307:3306
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  app:
+    container_name: php_app
+    image: php:8.2
+    build: ./php
+    ports:
+      - 8000:80
+    volumes:
+      - web-data:/var/www/html
+    depends_on:
+      - db
+
+volumes:
+  web-data: 
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./php
+  db-data:
