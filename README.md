@@ -23,9 +23,13 @@
 **Step1:** `docker build -t react:18 .` <br>
 **Step2:** `docker run --name=react -d -p 8000:3000 react:18` <br>
 
-### 2. React with Build
-**Step1:** `docker build -f BuildDockerfile -t react-build:18 .` <br>
-**Step2:** `docker run --name=react-build -d -p 8000:80 react-build:18` <br>
+### 2. React with nginx
+**Step1:** `docker build -f BuildDockerfile -t react-nginx:18 .` <br>
+**Step2:** `docker run --name=react-nginx -d -p 8000:80 react-nginx:18` <br>
+
+## Vue
+**Step1:** `docker build -t vue:3.0 .` <br>
+**Step2:** `docker run -d -p 8000:80 vue:3.0` <br>
 
 # Compose files
 
