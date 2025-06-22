@@ -17,6 +17,16 @@
 **Step1:** `docker pull karthimkk/mysql:8.4` <br>
 **Step2:** `docker run -d -p 8000:80 karthimkk/mysql:8.4` <br>
 
+## React
+
+### 1. React
+**Step1:** `docker build -t react:18 .` <br>
+**Step2:** `docker run --name=react -d -p 8000:3000 react:18` <br>
+
+### 2. React with Build
+**Step1:** `docker build -f BuildDockerfile -t react-build:18 .` <br>
+**Step2:** `docker run --name=react-build -d -p 8000:80 react-build:18` <br>
+
 # Compose files
 
 **Step1:** `docker compose build` <br>
@@ -25,3 +35,4 @@
 ## Files:
  - PHP-MYSQL
  - PHPMyAdmin
+ - Laravel
