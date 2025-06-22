@@ -1,0 +1,30 @@
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: laravel:10
+    container_name: laravel
+    restart: unless-stopped
+    volumes:
+      - laravel_app:/var/www/html
+    ports:
+      - "8000:80"
+    depends_on:
+      - db
+    networks:
+      - laravel-network
+  db:
+    image: mysql:8.0
+    container_name: mysql
+    restart: unless-stopped
+    env_file: "mysql.env"
+    volumes:
+      - laravel_app:/docker-entrypoint-initdb.d
+    networks:
+      - laravel-network
+networks:
+  laravel-network:
+    driver: bridge
+volumes:
+  laravel_app:

@@ -14,9 +14,9 @@ services:
     container_name: phpmyadmin
     image: phpmyadmin
     restart: always
+    env_file: "mysql.env"
     environment:
       - PMA_HOST=db
-      - MYSQL_ROOT_PASSWORD=P@ssw0rd
     ports:
       - 8000:80
     depends_on:
